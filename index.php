@@ -80,11 +80,8 @@
 				$('.sl-calendar-montharrow').click(function(e){
 					e.preventDefault();
 					var link = 'http://stefanledin.se/testzon/kalender/index.php'+$(this).attr('href');
-						//link += ' #sl-calendar-wrapper';
-						console.log(link);
-					$('#ajaxtarget').html('').load(link, function(data){
-						console.log(data);
-					});
+
+					$('#ajaxtarget').load(link);
 				});
 			});
 		</script>
