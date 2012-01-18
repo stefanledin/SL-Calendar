@@ -228,23 +228,27 @@
 		</style>
 	</head>
 	<body>
-		<?php
-			echo slCalendar();
-		?>
+		
+		
+		<div id="ajaxtarget">
+			<?php
+				echo slCalendar();
+			?>
+		</div>
+
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>
-			/*$(document).ready(function(){
+			$(document).ready(function(){
 				$('.sl-calendar-montharrow').click(function(e){
 					e.preventDefault();
 					var link = 'http://stefanledin.se/testzon/kalender/index.php'+$(this).attr('href');
 						link += ' #sl-calendar-wrapper';
 						console.log(link);
-					$.get(link, function(data){
+					$('#ajaxtarget').load(link, function(data){
 						console.log(data);
-						//$(body).html(data);
 					});
 				});
-			});*/
+			});
 		</script>
 	</body>
 </html>
