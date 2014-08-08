@@ -1,5 +1,8 @@
 <?php
-	require_once('sl_calendar.php');
+	require 'src/sl/calendar.php';
+	use SL\Calendar;
+	
+	new Calendar;
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -68,11 +71,7 @@
 	</head>
 	<body>
 		
-		<div id="ajaxtarget">
-			<?php
-				echo slCalendar();
-			?>
-		</div>
+		
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script>
