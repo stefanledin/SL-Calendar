@@ -10,14 +10,19 @@ class Calendar
 	public $week;
 
 	public $markup;
+	public $events;
 
-	function __construct($year = null, $month = null, $day = null, $timezone = 'Europe/Stockholm') {
-		date_default_timezone_set($timezone);
+	protected $default_settings;
+
+	function __construct( $settings = null ) {
+		date_default_timezone_set('Europe/Stockholm');
 		setlocale(LC_TIME, 'sv_SE');
 		
-		$this->year = ($year) ? $year : date('Y');
-		$this->month = ($month) ? $month : date('m');
-		$this->day = ($day) ? $day : date('d');
+		$this->year = (isset($settings['year'])) ? $settings['year'] : date('Y');
+		$this->month = (isset($settings['month'])) ? $settings['month'] : date('m');
+		$this->day = (isset($settings['day'])) ? $settings['day'] : date('d');
+
+		$this->events = (isset($settings['marked_dates'])) ? $settings['marked_dates'] : array();
 
 		$base_date = strtotime($this->year.'-'.$this->month.'-'.$this->day);
 
@@ -32,6 +37,5 @@ class Calendar
 		$markup = new Markup($this);
 		echo $markup->markup;
 	}
-
 
 }
