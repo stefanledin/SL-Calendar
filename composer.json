@@ -1,0 +1,11 @@
+{
+	"autoload": {
+		"psr-4": {
+			"ordbild\\": "src/ordbild/"
+		}
+	},
+	"require-dev": {
+		"codeception/codeception": "2.0.*",
+		"mockery/mockery": "0.9.*"
+	}
+}
