@@ -82,13 +82,19 @@ class Markup
 			// utrymme framför. Detta representerar dagarna i veckan som hör till
 			// föregående månad.
 			if ($weekday != 1) {
-				$markup .= '<td colspan="'.($weekday-1).'"></td>';
+				$markup .= '<td colspan="'.(($weekday == 0) ? 6 : $weekday-1).'"></td>';
 			}
 		}
 		
 		// Dagens datum
-		$markup .= '<td>'.$day_in_month.'</td>';
-		
+		$markup .= '<td'.((date('Y-m-d', $timestamp) == date('Y-m-d')) ? ' class="today"' : '').'>';
+			if (in_array($day_in_month, $this->calendar->events)) {
+				$markup .= '<a href="#">'.$day_in_month.'</a>';
+			} else {
+				$markup .= $day_in_month;
+			}
+		$markup .= '</td>';
+
 		// Om det är sista dagen i veckan eller sista dagen i månaden.
 		if ( ($weekday == 0) || $day_in_month == $this->calendar->days_in_month ) {
 
